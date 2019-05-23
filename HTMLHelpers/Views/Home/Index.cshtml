@@ -1,0 +1,99 @@
+﻿@model HTMLHelpers.Models.Users
+@{
+
+    ViewBag.Title = "Home Page";
+    var NameList = new List<SelectListItem>(){
+new SelectListItem(){Value="1",Text="Faisal"},
+new SelectListItem(){Value="2",Text="Pathan"}
+
+};
+}
+
+<div>
+    <h2>
+        Simple Helpers
+    </h2>
+    <br />
+    <table>
+        <tr>
+            <td>@Html.Label("User Name")</td>
+            <td>@Html.TextBox("UserName")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("User Phone")</td>
+            <td>@Html.TextBox("UserPhone")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("User Email")</td>
+            <td>@Html.TextBox("UserEmail")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("User Password")</td>
+            <td>@Html.Password("UserPassword")</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Male")
+                @Html.RadioButton("Male", new { value = "Male" })
+            </td>
+            <td>
+                @Html.Label("Female")
+                @Html.RadioButton("Female", new { value = "Female" })
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.Label("User name")</td>
+            <td>@Html.DropDownList("Users", NameList)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("User Terms")</td>
+            <td> @Html.CheckBox("UserTerms")</td>
+        </tr>
+    </table>
+    <hr />
+</div>
+<div>
+    <h2>Strongly Typed Helpers</h2>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.Name)</td>
+                <td>@Html.TextBoxFor(m => m.Name)</td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(m => m.Phone)</td>
+                <td> @Html.TextBoxFor(m => m.Phone)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Email)</td>
+                <td> @Html.TextBoxFor(m => m.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td> @Html.PasswordFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Male")
+                    @Html.RadioButtonFor(m => m.Gender, "Male", new { value = "Male" })
+                </td>
+                <td>
+                    @Html.Label("Female")
+                    @Html.RadioButtonFor(m => m.Gender, "Female", new { value = "Female" })
+                </td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(m => m.User)</td>
+                <td>@Html.DropDownListFor(m => m.User, NameList)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Terms)</td>
+                <td>@Html.CheckBoxFor(m => m.Terms)</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    }
+</div>
